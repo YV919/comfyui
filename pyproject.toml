@@ -9,5 +9,5 @@ dependencies = []
 Repository = "https://github.com/YV919/comfyui"
 
 [tool.comfy]
-PublisherId = "yv919"
+PublisherId = "yvwen"
 DisplayName = "豆包 Seedance 视频 (DMXAPI)"
