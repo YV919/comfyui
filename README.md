@@ -5,6 +5,18 @@
 
 ---
 
+## 🔐 Security Disclosure (for reviewers & users)
+
+This node pack makes **exactly three kinds of network calls**, all disclosed here and in the node tooltips. There is nothing else — no telemetry, no analytics, no remote code download / `eval`, no credential harvesting. The user's API key is sent **only** to the API endpoint the user configures.
+
+1. **DMXAPI video-generation API** (`POST {base_url}/v1/responses`, default `https://www.dmxapi.cn`, user-configurable) — the core function. Generation requests (prompt + reference media + the user's own DMXAPI key) are submitted here, and task status is polled here.
+2. **Anonymous temp-file upload to `litterbox.catbox.moe`** — used **only** by the optional `video_1..3` VIDEO inputs of the "参考生成视频 / Reference-to-Video" node. Reason: the DMXAPI backend accepts reference *videos* only as public URLs (no upload endpoint, no base64), so to let users connect a local *Load Video* node, the video is uploaded to litterbox (an anonymous temporary file host; links auto-expire after 72 hours) and the resulting URL is passed to the API. This is functionally the same pattern as the official ByteDance partner node (which uploads to comfy.org storage instead — an endpoint this third-party-API pack cannot use).
+   - The privacy implication is **prominently warned** in this README and in the `video_1` socket tooltip (*"private videos: do NOT use this input"*).
+   - A **no-upload alternative always exists**: the `video_url_1..3` string inputs take a public URL / `asset://` ID and never touch any third-party host. Images and audio are never uploaded anywhere except to DMXAPI itself (inline base64 in the API request).
+3. **Result download** — the finished MP4 is downloaded from the URL returned by DMXAPI into the local ComfyUI `output/doubao/` folder.
+
+---
+
 ## 一、这个插件能做什么（6 大功能）
 
 | # | 功能 | 用哪个节点 | 输入 |
