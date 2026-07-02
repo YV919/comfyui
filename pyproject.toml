@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-doubao-seedance"
 description = "豆包 Seedance 2.0 视频生成节点（走 DMXAPI）：文生视频 / 首帧生视频 / 首尾帧生视频 / 视频编辑·延长·多模态参考生视频 / 任务获取。Doubao Seedance 2.0 video nodes via DMXAPI."
-version = "1.0.0"
+version = "1.0.2"
 license = { file = "LICENSE" }
 dependencies = []
 
