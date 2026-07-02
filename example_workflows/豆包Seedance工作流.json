@@ -1,0 +1,61 @@
+{
+  "last_node_id": 2,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "DoubaoSeedanceTextToVideo",
+      "pos": [200, 200],
+      "size": [400, 420],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {"name": "task_id", "type": "STRING", "links": [1], "slot_index": 0},
+        {"name": "get_model", "type": "STRING", "links": [2], "slot_index": 1}
+      ],
+      "properties": {"Node name for S&R": "DoubaoSeedanceTextToVideo"},
+      "widgets_values": [
+        "doubao-seedance-2-0-260128",
+        "写实风格，晴朗的蓝天之下，一大片白色的雏菊花田，镜头逐渐拉近，最终定格在一朵雏菊花的特写上，花瓣上有几颗晶莹的露珠",
+        "",
+        "https://www.dmxapi.cn",
+        "16:9",
+        "480p",
+        5,
+        true,
+        -1,
+        "randomize",
+        false
+      ]
+    },
+    {
+      "id": 2,
+      "type": "DoubaoSeedanceFetch",
+      "pos": [680, 200],
+      "size": [400, 280],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {"name": "task_id", "type": "STRING", "link": 1, "widget": {"name": "task_id"}},
+        {"name": "get_model", "type": "STRING", "link": 2, "widget": {"name": "get_model"}}
+      ],
+      "outputs": [
+        {"name": "video", "type": "VIDEO", "links": null, "slot_index": 0},
+        {"name": "video_url", "type": "STRING", "links": null, "slot_index": 1}
+      ],
+      "properties": {"Node name for S&R": "DoubaoSeedanceFetch"},
+      "widgets_values": ["", "", "", "https://www.dmxapi.cn", 300, 6, "doubao/seedance"]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "STRING"],
+    [2, 1, 1, 2, 1, "STRING"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
